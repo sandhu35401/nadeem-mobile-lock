@@ -3,14 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Nadeem Mobile App</title>
-
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       min-height: 100vh;
@@ -22,17 +17,15 @@
       padding: 24px;
       color: #101828;
     }
-
     .card {
       width: 100%;
-      max-width: 430px;
+      max-width: 460px;
       background: white;
       border-radius: 28px;
       padding: 32px 24px;
       text-align: center;
       box-shadow: 0 20px 60px rgba(16, 24, 40, 0.12);
     }
-
     .logo {
       width: 78px;
       height: 78px;
@@ -46,20 +39,13 @@
       font-size: 30px;
       font-weight: 800;
     }
-
-    h1 {
-      margin: 0;
-      font-size: 28px;
-      letter-spacing: -0.7px;
-    }
-
+    h1 { margin: 0; font-size: 28px; letter-spacing: -0.7px; }
     .subtitle {
       margin: 10px 0 26px;
       color: #667085;
       line-height: 1.6;
       font-size: 14px;
     }
-
     .download {
       display: block;
       width: 100%;
@@ -72,20 +58,35 @@
       font-size: 15px;
       box-shadow: 0 12px 25px rgba(36, 87, 255, 0.25);
     }
-
+    .qr-section {
+      margin-top: 26px;
+      border-top: 1px solid #eaecf0;
+      padding-top: 24px;
+    }
+    .qr-section h2 { margin: 0 0 8px; font-size: 18px; }
+    .qr-section p {
+      margin: 0 0 16px;
+      color: #667085;
+      line-height: 1.5;
+      font-size: 12px;
+    }
+    .qr {
+      width: 280px;
+      max-width: 100%;
+      margin: 0 auto 10px;
+      display: block;
+      border: 10px solid #fff;
+      box-shadow: 0 8px 24px rgba(16, 24, 40, 0.1);
+      border-radius: 12px;
+    }
+    .qr-note { font-size: 11px; color: #98a2b3; }
     .steps {
       margin-top: 26px;
       text-align: left;
       border-top: 1px solid #eaecf0;
       padding-top: 20px;
     }
-
-    .step {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
+    .step { display: flex; gap: 12px; margin-bottom: 16px; }
     .number {
       flex: 0 0 30px;
       height: 30px;
@@ -98,80 +99,62 @@
       font-weight: 800;
       font-size: 13px;
     }
-
-    .step b {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 13px;
-    }
-
-    .step span {
-      color: #667085;
-      font-size: 12px;
-      line-height: 1.5;
-    }
-
-    .footer {
-      margin-top: 22px;
-      font-size: 11px;
-      color: #98a2b3;
-    }
+    .step b { display: block; margin-bottom: 4px; font-size: 13px; }
+    .step span { color: #667085; font-size: 12px; line-height: 1.5; }
+    .footer { margin-top: 22px; font-size: 11px; color: #98a2b3; }
   </style>
 </head>
-
 <body>
-
   <main class="card">
-
     <div class="logo">NM</div>
-
     <h1>Nadeem Mobile</h1>
-
     <p class="subtitle">
-      Official Nadeem Mobile device management app.
-      Download and install the Android app on your device.
+      Official Nadeem Mobile customer device management app.
     </p>
 
-    <a
-      class="download"
-      href="https://github.com/sandhu35401/nadeem-mobile-lock/releases/latest/download/app-release.apk"
-    >
+    <a class="download"
+       href="https://github.com/sandhu35401/nadeem-mobile-lock/releases/latest/download/app-release.apk">
       Download Android App
     </a>
 
-    <div class="steps">
+    <section class="qr-section">
+      <h2>Device Owner QR Setup</h2>
+      <p>
+        Use this QR on a new or factory-reset Android phone during the setup wizard.
+        The QR installs Nadeem Mobile and provisions it as the Device Owner.
+      </p>
+      <img class="qr"
+           src="device-owner-qr.png"
+           alt="Nadeem Mobile Device Owner QR provisioning code"
+           loading="eager" />
+      <div class="qr-note">QR is regenerated automatically for the latest signed APK.</div>
+    </section>
 
+    <div class="steps">
       <div class="step">
         <div class="number">1</div>
         <div>
-          <b>Download</b>
-          <span>Tap the button above to download the Nadeem Mobile Android app.</span>
+          <b>For Device Owner</b>
+          <span>Factory-reset the target phone. During initial setup, use the Android QR provisioning option and scan the QR above from another screen.</span>
         </div>
       </div>
-
       <div class="step">
         <div class="number">2</div>
         <div>
-          <b>Install</b>
-          <span>Install the downloaded APK on the Android phone.</span>
+          <b>Use mobile data</b>
+          <span>The provisioning payload requests mobile data for downloading the app, so the target phone does not need to be on the same Wi-Fi network.</span>
         </div>
       </div>
-
       <div class="step">
         <div class="number">3</div>
         <div>
-          <b>Pair your device</b>
-          <span>Open the app and enter the pairing code provided by Nadeem Mobile.</span>
+          <b>Pair the customer</b>
+          <span>After Android finishes managed setup, open Nadeem Mobile and enter the six-digit pairing code from the dashboard.</span>
         </div>
       </div>
-
     </div>
 
-    <div class="footer">
-      NADEEM MOBILE LIMITED
-    </div>
-
+    <div class="footer">NADEEM MOBILE LIMITED</div>
   </main>
-
 </body>
 </html>
