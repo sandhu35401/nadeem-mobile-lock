@@ -1,1 +1,1 @@
-Customer APK rebuild: persistent signing key + app version 2.1.
+Customer APK rebuild triggered for pairing/setup fix v2.2.
