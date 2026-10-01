@@ -47,16 +47,16 @@ jobs:
               "project_id": "nadeem-mobile-58f18"
             },
             "client": [{
-              "client_info": {
-                "mobilesdk_app_id": "1:178796478534:android:954074f9a29a020cf04a47",
-                "android_client_info": {
-                  "package_name": "com.nadeemmobile.lock"
-                }
-              }],
-              "api_key": [{
-                "current_key": "not-used-by-build"
-              }]
-            }],
+            "client_info": {
+              "mobilesdk_app_id": "1:178796478534:android:954074f9a29a020cf04a47",
+              "android_client_info": {
+                "package_name": "com.nadeemmobile.lock"
+              }
+            },
+            "api_key": [{
+              "current_key": ""
+            }]
+          }],
             "configuration_version": "1"
           }
           EOF
