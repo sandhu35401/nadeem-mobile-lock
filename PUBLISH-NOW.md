@@ -1,1 +1,1 @@
-Customer APK v2.4: enrollment protection + reboot lock persistence.
+Customer APK v2.5: reboot persistence + enrollment protection build fix.
