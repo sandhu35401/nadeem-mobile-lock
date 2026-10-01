@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nadeem Mobile — Android Device Owner Setup</title>
+  <style>
+    *{box-sizing:border-box} body{margin:0;min-height:100vh;background:#f4f7fb;font-family:Arial,sans-serif;color:#101828;display:flex;justify-content:center;padding:24px}
+    .card{width:100%;max-width:520px;background:#fff;border-radius:28px;padding:28px 22px;box-shadow:0 20px 60px rgba(16,24,40,.12)}
+    .logo{width:64px;height:64px;border-radius:18px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#2457ff,#7047ff);color:#fff;font-size:24px;font-weight:800}
+    h1{text-align:center;margin:0;font-size:25px}.sub{text-align:center;color:#667085;line-height:1.55;font-size:13px;margin:10px 0 20px}
+    .qr{display:block;width:min(360px,100%);margin:18px auto;padding:12px;background:#fff;border:1px solid #eaecf0;border-radius:18px}
+    .note{margin-top:14px;padding:14px;border-radius:14px;background:#f8fafc;border:1px solid #eaecf0;color:#475467;line-height:1.6;font-size:13px}
+    .step{display:flex;gap:12px;margin:13px 0}.n{flex:0 0 30px;height:30px;border-radius:50%;background:#eef2ff;color:#2457ff;display:flex;align-items:center;justify-content:center;font-weight:800}
+    .step b{display:block;margin-bottom:3px;font-size:13px}.step span{color:#667085;font-size:12px;line-height:1.5}
+    .back{display:block;margin-top:20px;text-align:center;text-decoration:none;color:#2457ff;font-weight:700;font-size:13px}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="logo">NM</div>
+    <h1>Android Device Owner Setup</h1>
+    <p class="sub">Admin / technician setup only. Customer ke mobile mein admin username ya dashboard password enter nahi karna.</p>
+
+    <img class="qr" src="device-owner-qr.png?v=latest" alt="Nadeem Mobile Android Device Owner provisioning QR code" />
+
+    <div class="note"><strong>Important:</strong> Normal APK install se Device Owner activate nahi hota. Ye QR Android ke managed-device provisioning ke liye hai aur fresh / factory-reset phone par Android setup ke dauran scan kiya jata hai.</div>
+
+    <div class="step"><div class="n">1</div><div><b>Phone prepare karo</b><span>Target phone ko fresh ya factory-reset state mein rakho. Zaroori data pehle backup kar lo.</span></div></div>
+    <div class="step"><div class="n">2</div><div><b>QR scan karo</b><span>Android initial setup ke provisioning step mein is QR ko scan karo. Android Nadeem Mobile ko Device Owner / fully managed app ke taur par set karega.</span></div></div>
+    <div class="step"><div class="n">3</div><div><b>Setup complete hone do</b><span>Provisioning finish hone ke baad Nadeem Mobile app open hogi. Yahan koi admin password nahi chahiye.</span></div></div>
+    <div class="step"><div class="n">4</div><div><b>6-digit pairing code</b><span>Dashboard se customer ka 6-digit code enter karo. Pairing ke baad uninstall aur normal factory-reset restrictions Device Owner policy ke through apply hongi.</span></div></div>
+
+    <a class="back" href="index.html">← Back to Nadeem Mobile download page</a>
+  </main>
+</body>
+</html>
