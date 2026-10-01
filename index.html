@@ -58,30 +58,19 @@
       font-size: 15px;
       box-shadow: 0 12px 25px rgba(36, 87, 255, 0.25);
     }
-    .qr-section {
-      margin-top: 26px;
-      border-top: 1px solid #eaecf0;
-      padding-top: 24px;
-    }
-    .qr-section h2 { margin: 0 0 8px; font-size: 18px; }
-    .qr-section p {
-      margin: 0 0 16px;
+    .notice {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 14px;
+      background: #f8fafc;
       color: #667085;
-      line-height: 1.5;
+      line-height: 1.6;
       font-size: 12px;
+      text-align: left;
+      border: 1px solid #eaecf0;
     }
-    .qr {
-      width: 280px;
-      max-width: 100%;
-      margin: 0 auto 10px;
-      display: block;
-      border: 10px solid #fff;
-      box-shadow: 0 8px 24px rgba(16, 24, 40, 0.1);
-      border-radius: 12px;
-    }
-    .qr-note { font-size: 11px; color: #98a2b3; }
     .steps {
-      margin-top: 26px;
+      margin-top: 22px;
       text-align: left;
       border-top: 1px solid #eaecf0;
       padding-top: 20px;
@@ -117,39 +106,36 @@
       Download Android App
     </a>
 
-    <section class="qr-section">
-      <h2>Device Owner QR Setup</h2>
-      <p>
-        Use this QR on a new or factory-reset Android phone during the setup wizard.
-        The QR installs Nadeem Mobile and provisions it as the Device Owner.
-      </p>
-      <img class="qr"
-           src="device-owner-qr.png"
-           alt="Nadeem Mobile Device Owner QR provisioning code"
-           loading="eager" />
-      <div class="qr-note">QR is regenerated automatically for the latest signed APK.</div>
-    </section>
+    <div class="notice">
+      <strong>Customer phone:</strong> install the app, open it, and enter only the six-digit pairing code provided by Nadeem Mobiles.
+      You do not enter a server address and you do not scan a QR code in the app.
+    </div>
+
+    <div class="notice">
+      <strong>Device Owner:</strong> this public page does not show the Device Owner QR/setup artifact.
+      Device Owner provisioning is an administrator/technician setup step on a fresh or factory-reset phone.
+    </div>
 
     <div class="steps">
       <div class="step">
         <div class="number">1</div>
         <div>
-          <b>For Device Owner</b>
-          <span>Factory-reset the target phone. During initial setup, use the Android QR provisioning option and scan the QR above from another screen.</span>
+          <b>Download the app</b>
+          <span>Install the official Nadeem Mobile APK on the target phone.</span>
         </div>
       </div>
       <div class="step">
         <div class="number">2</div>
         <div>
-          <b>Use mobile data</b>
-          <span>The provisioning payload requests mobile data for downloading the app, so the target phone does not need to be on the same Wi-Fi network.</span>
+          <b>Complete managed-device setup</b>
+          <span>The administrator completes the supported Android Device Owner provisioning method separately.</span>
         </div>
       </div>
       <div class="step">
         <div class="number">3</div>
         <div>
           <b>Pair the customer</b>
-          <span>After Android finishes managed setup, open Nadeem Mobile and enter the six-digit pairing code from the dashboard.</span>
+          <span>Open Nadeem Mobile and enter the six-digit pairing code from the dashboard.</span>
         </div>
       </div>
     </div>
