@@ -80,15 +80,7 @@ jobs:
         run: |
           mkdir -p ~/.android
           if [ ! -f ~/.android/debug.keystore ]; then
-            keytool -genkeypair -v \
-              -keystore ~/.android/debug.keystore \
-              -storepass android \
-              -keypass android \
-              -alias androiddebugkey \
-              -keyalg RSA \
-              -keysize 2048 \
-              -validity 10000 \
-              -dname "CN=Android Debug,O=Android,C=US"
+            keytool -genkeypair -v               -keystore ~/.android/debug.keystore               -storepass android               -keypass android               -alias androiddebugkey               -keyalg RSA               -keysize 2048               -validity 10000               -dname "CN=Android Debug,O=Android,C=US"
           fi
 
       - name: Fix Gradle wrapper permissions
@@ -97,6 +89,19 @@ jobs:
       - name: Build customer APK
         working-directory: source/android-app
         run: ./gradlew clean assembleRelease -PnadeemApiBaseUrl=https://nadeem-mobiles-api.user03174904469.workers.dev
+
+      - name: Calculate DPC signing certificate checksum
+        shell: bash
+        run: |
+          keytool -exportcert             -keystore ~/.android/debug.keystore             -storepass android             -alias androiddebugkey             -rfc > /tmp/nadeem-dpc-cert.pem
+
+          openssl x509 -in /tmp/nadeem-dpc-cert.pem -outform DER |
+            openssl dgst -sha256 -binary |
+            base64 -w 0 |
+            tr '+/' '-_' |
+            tr -d '=' > device-owner-signature-checksum.txt
+
+          echo "DPC signature checksum: $(cat device-owner-signature-checksum.txt)"
 
       - name: Publish APK release
         uses: softprops/action-gh-release@v2
@@ -108,3 +113,55 @@ jobs:
           files: source/android-app/app/build/outputs/apk/release/app-release.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate Device Owner QR assets
+        shell: bash
+        run: |
+          python -m pip install --disable-pip-version-check "qrcode[pil]"
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import qrcode
+
+          checksum = Path("device-owner-signature-checksum.txt").read_text().strip()
+
+          payload = {
+              "android.app.extra.PROVISIONING_DEVICE_ADMIN_COMPONENT_NAME":
+                  "com.nadeemmobile.lock/com.nadeemmobile.lock.admin.LockDeviceAdminReceiver",
+              "android.app.extra.PROVISIONING_DEVICE_ADMIN_PACKAGE_DOWNLOAD_LOCATION":
+                  "https://github.com/sandhu35401/nadeem-mobile-lock/releases/latest/download/app-release.apk",
+              "android.app.extra.PROVISIONING_DEVICE_ADMIN_SIGNATURE_CHECKSUM":
+                  checksum,
+              "android.app.extra.PROVISIONING_USE_MOBILE_DATA": True,
+          }
+
+          text = json.dumps(payload, separators=(",", ":"))
+          Path("device-owner-qr.json").write_text(
+              json.dumps(payload, indent=2) + "\n",
+              encoding="utf-8"
+          )
+
+          qr = qrcode.QRCode(
+              version=None,
+              error_correction=qrcode.constants.ERROR_CORRECT_M,
+              box_size=12,
+              border=4,
+          )
+          qr.add_data(text)
+          qr.make(fit=True)
+          image = qr.make_image()
+          image.save("device-owner-qr.png")
+
+          Path("device-owner-qr.txt").write_text(text + "\n", encoding="utf-8")
+          PY
+
+      - name: Publish QR assets to GitHub Pages
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add device-owner-qr.png device-owner-qr.json device-owner-qr.txt
+          git commit -m "Update Device Owner QR for latest APK [skip ci]" || exit 0
+          git push origin main
