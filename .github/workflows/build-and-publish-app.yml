@@ -91,6 +91,9 @@ jobs:
               -dname "CN=Android Debug,O=Android,C=US"
           fi
 
+      - name: Fix Gradle wrapper permissions
+        run: chmod +x source/android-app/gradlew
+
       - name: Build customer APK
         working-directory: source/android-app
         run: ./gradlew clean assembleRelease -PnadeemApiBaseUrl=https://nadeem-mobiles-api.user03174904469.workers.dev
