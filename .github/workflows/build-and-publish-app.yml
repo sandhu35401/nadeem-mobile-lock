@@ -47,19 +47,27 @@ jobs:
               "project_id": "nadeem-mobile-58f18"
             },
             "client": [{
-              "client_info": {
-                "mobilesdk_app_id": "1:178796478534:android:954074f9a29a020cf04a47",
-                "android_client_info": {
-                  "package_name": "com.nadeemmobile.lock"
-                }
-              }],
-              "api_key": [{
-                "current_key": "not-used-by-build"
-              }]
-            }],
+            "client_info": {
+              "mobilesdk_app_id": "1:178796478534:android:954074f9a29a020cf04a47",
+              "android_client_info": {
+                "package_name": "com.nadeemmobile.lock"
+              }
+            },
+            "api_key": [{
+              "current_key": ""
+            }]
+          }],
             "configuration_version": "1"
           }
           EOF
+
+      - name: Enable AndroidX
+        shell: bash
+        run: |
+          printf 'android.useAndroidX=true\nandroid.enableJetifier=true\n' > source/android-app/gradle.properties
+
+      - name: Confirm source version
+        run: echo "Building customer app source from sandhu35401/nadeem-mobiles@main"
 
       - name: Build customer APK
         working-directory: source/android-app
