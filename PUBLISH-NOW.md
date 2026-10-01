@@ -1,1 +1,1 @@
-Customer APK v2.3: pairing works even when Firebase client API key is missing.
+Customer APK v2.4: enrollment protection + reboot lock persistence.
