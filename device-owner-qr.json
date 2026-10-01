@@ -1,6 +1,0 @@
-{
-  "android.app.extra.PROVISIONING_DEVICE_ADMIN_COMPONENT_NAME": "com.nadeemmobile.lock/com.nadeemmobile.lock.admin.LockDeviceAdminReceiver",
-  "android.app.extra.PROVISIONING_DEVICE_ADMIN_PACKAGE_DOWNLOAD_LOCATION": "https://github.com/sandhu35401/nadeem-mobile-lock/releases/latest/download/app-release.apk",
-  "android.app.extra.PROVISIONING_DEVICE_ADMIN_SIGNATURE_CHECKSUM": "jrXlICr_P8jImYv2EvoZU47d89qanwNcCQDeqLjQXsI",
-  "android.app.extra.PROVISIONING_USE_MOBILE_DATA": true
-}
