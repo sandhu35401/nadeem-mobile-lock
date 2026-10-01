@@ -61,6 +61,11 @@ jobs:
           }
           EOF
 
+      - name: Enable AndroidX
+        shell: bash
+        run: |
+          printf 'android.useAndroidX=true\nandroid.enableJetifier=true\n' > source/android-app/gradle.properties
+
       - name: Build customer APK
         working-directory: source/android-app
         run: ./gradlew clean assembleRelease -PnadeemApiBaseUrl=https://nadeem-mobiles-api.user03174904469.workers.dev
