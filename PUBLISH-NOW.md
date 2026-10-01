@@ -1,0 +1,1 @@
+Customer APK publish trigger for the new app build.
