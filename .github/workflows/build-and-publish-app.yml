@@ -69,6 +69,28 @@ jobs:
       - name: Confirm source version
         run: echo "Building customer app source from sandhu35401/nadeem-mobiles@main"
 
+      - name: Restore persistent signing key
+        uses: actions/cache@v4
+        with:
+          path: ~/.android/debug.keystore
+          key: nadeem-mobile-debug-keystore-v1
+
+      - name: Create persistent signing key when missing
+        shell: bash
+        run: |
+          mkdir -p ~/.android
+          if [ ! -f ~/.android/debug.keystore ]; then
+            keytool -genkeypair -v \
+              -keystore ~/.android/debug.keystore \
+              -storepass android \
+              -keypass android \
+              -alias androiddebugkey \
+              -keyalg RSA \
+              -keysize 2048 \
+              -validity 10000 \
+              -dname "CN=Android Debug,O=Android,C=US"
+          fi
+
       - name: Build customer APK
         working-directory: source/android-app
         run: ./gradlew clean assembleRelease -PnadeemApiBaseUrl=https://nadeem-mobiles-api.user03174904469.workers.dev
