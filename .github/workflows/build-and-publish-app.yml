@@ -43,20 +43,21 @@ jobs:
           cat > source/android-app/app/google-services.json <<'EOF'
           {
             "project_info": {
-              "project_number": "178796478534",
-              "project_id": "nadeem-mobile-58f18"
+              "project_number": "64066783078",
+              "project_id": "nadeem-mobile",
+              "storage_bucket": "nadeem-mobile.firebasestorage.app"
             },
             "client": [{
-            "client_info": {
-              "mobilesdk_app_id": "1:178796478534:android:954074f9a29a020cf04a47",
-              "android_client_info": {
-                "package_name": "com.nadeemmobile.lock"
-              }
-            },
-            "api_key": [{
-              "current_key": ""
-            }]
-          }],
+              "client_info": {
+                "mobilesdk_app_id": "1:64066783078:android:518664693e106f446c2aa7",
+                "android_client_info": {
+                  "package_name": "com.nadeemmobile.lock"
+                }
+              },
+              "api_key": [{
+                "current_key": ""
+              }]
+            }],
             "configuration_version": "1"
           }
           EOF
