@@ -1,1 +1,1 @@
-Customer APK publish trigger for the new app build.
+Customer APK rebuild: persistent signing key + app version 2.1.
