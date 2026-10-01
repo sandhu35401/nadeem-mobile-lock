@@ -1,1 +1,1 @@
-Customer APK rebuild triggered for pairing/setup fix v2.2.
+Customer APK rebuild v2.2 - pairing flow fix and Gradle permission fix.
